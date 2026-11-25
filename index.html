@@ -19,7 +19,7 @@
         }
 
         .container {
-            max-width: 1120px;
+            max-width: 1280px;
             margin: 0 auto;
         }
 
@@ -29,10 +29,24 @@
             font-size: 28px;
         }
 
+        /* Böyük ekranda hər sırada 4 kart */
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            grid-template-columns: repeat(4, 1fr);
             gap: 22px;
+        }
+
+        /* Planşet və kiçik ekranlarda kartların sıxılmaması üçün */
+        @media (max-width: 1024px) {
+            .grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
         }
 
         .card {
@@ -86,10 +100,9 @@
     <div class="container">
         <h1>3D Modellərim</h1>
 
+        <!-- Bütün kartlar bu tək .grid içinə yığılır -->
         <div class="grid">
-            <!-- Yeni model əlavə etmək üçün bu <div class="card"> blokunu kopyalayıb yapışdır -->
             <div class="card">
-                <!-- myRob qovluğuna atdığın şəklin dəqiq adını buraya yaz (məsələn: myRob.png) -->
                 <img src="https://serxanali.github.io/myRob/myRob2.png" alt="myRob 3D modeli">
                 <div class="card-footer">
                     <span class="card-title">myRob</span>
@@ -97,12 +110,8 @@
                 </div>
                 <a class="card-link" href="https://serxanali.github.io/myRob/" aria-label="myRob modelini aç"></a>
             </div>
-        </div>
 
-         <div class="grid">
-            <!-- Yeni model əlavə etmək üçün bu <div class="card"> blokunu kopyalayıb yapışdır -->
             <div class="card">
-                <!-- myRob qovluğuna atdığın şəklin dəqiq adını buraya yaz (məsələn: myRob.png) https://serxanali.github.io/santa-3d/ -->
                 <img src="https://serxanali.github.io/santa-3d/santa.png" alt="Santa 3D modeli">
                 <div class="card-footer">
                     <span class="card-title">Santa</span>
@@ -110,6 +119,8 @@
                 </div>
                 <a class="card-link" href="https://serxanali.github.io/santa-3d/" aria-label="Santa modelini aç"></a>
             </div>
+
+            <!-- Yeni model əlavə etmək üçün bu <div class="card"> blokunu kopyalayıb .grid içinə yapışdır -->
         </div>
     </div>
 
